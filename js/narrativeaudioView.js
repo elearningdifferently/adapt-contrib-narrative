@@ -8,9 +8,9 @@ define([
 
     events() {
       return {
-        'click .js-narrative-strapline-open-popup': 'openPopup',
-        'click .js-narrative-controls-click': 'onNavigationClicked',
-        'click .js-narrative-progress-click': 'onProgressClicked'
+        'click .js-narrativeaudio-strapline-open-popup': 'openPopup',
+        'click .js-narrativeaudio-controls-click': 'onNavigationClicked',
+        'click .js-narrativeaudio-progress-click': 'onProgressClicked'
       };
     }
 
@@ -39,11 +39,13 @@ define([
     onItemsActiveChange(item, _isActive) {
       if (!_isActive) return;
       this.setStage(item);
+       this.$(`#audio-${item.get('_index')}`).get(0).play();
     }
 
     onItemsVisitedChange(item, _isVisited) {
       if (!_isVisited) return;
       this.$(`[data-index="${item.get('_index')}"]`).addClass('is-visited');
+      this.$(`#audio-${item.get('_index')}`).get(0).pause();    
     }
 
     calculateMode() {
@@ -66,7 +68,7 @@ define([
       this.renderMode();
       this.setupNarrative();
 
-      this.$('.narrative__slider').imageready(this.setReadyStatus.bind(this));
+      this.$('.narrativeaudio__slider').imageready(this.setReadyStatus.bind(this));
 
       if (Adapt.config.get('_disableAnimation')) {
         this.$el.addClass('disable-animation');
@@ -135,12 +137,12 @@ define([
 
     replaceInstructions() {
       if (this.isLargeMode()) {
-        this.$('.narrative__instruction-inner').html(this.model.get('instruction'));
+        this.$('.narrativeaudio__instruction-inner').html(this.model.get('instruction'));
         return;
       }
 
       if (this.model.get('mobileInstruction') && !this.model.get('_wasHotgraphic')) {
-        this.$('.narrative__instruction-inner').html(this.model.get('mobileInstruction'));
+        this.$('.narrativeaudio__instruction-inner').html(this.model.get('mobileInstruction'));
       }
     }
 
@@ -177,8 +179,8 @@ define([
         offset *= -1;
       }
       const cssValue = `translateX(${offset}%)`;
-      const $sliderElm = this.$('.narrative__slider');
-      const $straplineHeaderElm = this.$('.narrative__strapline-header-inner');
+      const $sliderElm = this.$('.narrativeaudio__slider');
+      const $straplineHeaderElm = this.$('.narrativeaudio__strapline-header-inner');
 
       $sliderElm.css('transform', cssValue);
       $straplineHeaderElm.css('transform', cssValue);
@@ -199,8 +201,8 @@ define([
     focusOnNarrativeElement(itemIndex) {
       const dataIndexAttr = `[data-index='${itemIndex}']`;
       const $elementToFocus = this.isLargeMode() ?
-        this.$(`.narrative__content-item${dataIndexAttr}`) :
-        this.$(`.narrative__strapline-btn${dataIndexAttr}`);
+        this.$(`.narrativeaudio__content-item${dataIndexAttr}`) :
+        this.$(`.narrativeaudio__strapline-btn${dataIndexAttr}`);
       Adapt.a11y.focusFirst($elementToFocus);
     }
 
@@ -213,20 +215,20 @@ define([
         item.toggleVisited(true);
       }
 
-      this.$('.narrative__progress').removeClass('is-selected').filter(indexSelector).addClass('is-selected');
+      this.$('.narrativeaudio__progress').removeClass('is-selected').filter(indexSelector).addClass('is-selected');
 
-      const $slideGraphics = this.$('.narrative__slider-image-container');
+      const $slideGraphics = this.$('.narrativeaudio__slider-image-container');
       Adapt.a11y.toggleAccessibleEnabled($slideGraphics.children('.controls'), false);
       Adapt.a11y.toggleAccessibleEnabled($slideGraphics.filter(indexSelector).children('.controls'), true);
 
-      const $narrativeItems = this.$('.narrative__content-item');
-      $narrativeItems.addClass('u-visibility-hidden u-display-none');
-      Adapt.a11y.toggleAccessible($narrativeItems, false);
-      Adapt.a11y.toggleAccessible($narrativeItems.filter(indexSelector).removeClass('u-visibility-hidden u-display-none'), true);
+      const $narrativeaudioItems = this.$('.narrativeaudio__content-item');
+      $narrativeaudioItems.addClass('u-visibility-hidden u-display-none');
+      Adapt.a11y.toggleAccessible($narrativeaudioItems, false);
+      Adapt.a11y.toggleAccessible($narrativeaudioItems.filter(indexSelector).removeClass('u-visibility-hidden u-display-none'), true);
 
-      const $narrativeStraplineButtons = this.$('.narrative__strapline-btn');
-      Adapt.a11y.toggleAccessibleEnabled($narrativeStraplineButtons, false);
-      Adapt.a11y.toggleAccessibleEnabled($narrativeStraplineButtons.filter(indexSelector), true);
+      const $narrativeaudioStraplineButtons = this.$('.narrativeaudio__strapline-btn');
+      Adapt.a11y.toggleAccessibleEnabled($narrativeaudioStraplineButtons, false);
+      Adapt.a11y.toggleAccessibleEnabled($narrativeaudioStraplineButtons.filter(indexSelector), true);
 
       this.evaluateNavigation();
       this.evaluateCompletion();
@@ -243,16 +245,16 @@ define([
       const isAtStart = index === 0;
       const isAtEnd = index === itemCount - 1;
 
-      const $left = this.$('.narrative__controls-left');
-      const $right = this.$('.narrative__controls-right');
+      const $left = this.$('.narrativeaudio__controls-left');
+      const $right = this.$('.narrativeaudio__controls-right');
 
       const globals = Adapt.course.get('_globals');
 
       const ariaLabelsGlobals = globals._accessibility._ariaLabels;
-      const narrativeGlobals = globals._components._narrative;
+      const narrativeaudioGlobals = globals._components._narrativeaudio;
 
-      const ariaLabelPrevious = narrativeGlobals.previous || ariaLabelsGlobals.previous;
-      const ariaLabelNext = narrativeGlobals.next || ariaLabelsGlobals.next;
+      const ariaLabelPrevious = narrativeaudioGlobals.previous || ariaLabelsGlobals.previous;
+      const ariaLabelNext = narrativeaudioGlobals.next || ariaLabelsGlobals.next;
 
       const prevTitle = isAtStart ? '' : this.model.getItem(index - 1).get('title');
       const nextTitle = isAtEnd ? '' : this.model.getItem(index + 1).get('title');
@@ -313,7 +315,7 @@ define([
 
   }
 
-  NarrativeView.template = 'narrative';
+  NarrativeView.template = 'narrativeaudio';
 
   return NarrativeView;
 

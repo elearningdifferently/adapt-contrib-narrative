@@ -1,4 +1,4 @@
-# adapt-contrib-narrative
+# adapt-narrativeaudio
 
 **Narrative** is a *presentation component* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).
 
@@ -6,7 +6,7 @@
 
 **Narrative** displays items (or slides) that present an image and text side-by-side. Left and right navigation controls allow the learner to progress horizontally through the items. Optional text may precede it. Useful for detailing a sequential process. On mobile devices, the narrative text is collapsed above the image.
 
-[Visit the **Narrative** wiki](https://github.com/adaptlearning/adapt-contrib-narrative/wiki) for more information about its functionality and for explanations of key properties.
+[Visit the **Narrative** wiki](https://github.com/adaptlearning/adapt-narrativeaudio/wiki) for more information about its functionality and for explanations of key properties.
 
 ## Installation
 
@@ -15,11 +15,11 @@ As one of Adapt's *[core components](https://github.com/adaptlearning/adapt_fram
 * If **Narrative** has been uninstalled from the Adapt framework, it may be reinstalled.
 With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run the following from the command line:
   ```console
-  adapt install adapt-contrib-narrative
+  adapt install adapt-narrativeaudio
   ```
   Alternatively, this component can also be installed by adding the following line of code to the *adapt.json* file:
   ```json
-  "adapt-contrib-narrative": "*"
+  "adapt-narrativeaudio": "*"
   ```
   Then running the command:
   ```console
@@ -32,7 +32,7 @@ With the [Adapt CLI](https://github.com/adaptlearning/adapt-cli) installed, run 
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Narrative**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-narrative/blob/master/example.json). Visit the [**Narrative** wiki](https://github.com/adaptlearning/adapt-contrib-narrative/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki).
+The attributes listed below are used in *components.json* to configure **Narrative**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-narrativeaudio/blob/master/example.json). Visit the [**Narrative** wiki](https://github.com/adaptlearning/adapt-narrativeaudio/wiki) for more information about how they appear in the [authoring tool](https://github.com/adaptlearning/adapt_authoring/wiki).
 
 ### Attributes
 
@@ -69,7 +69,7 @@ The attributes listed below are used in *components.json* to configure **Narrati
 >**strapline** (string): This text is displayed as a title above the image when `Adapt.device.screenSize` is `small` (i.e., when viewed on mobile devices).
 
 ### Accessibility
-**Narrative** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-contrib-narrative/blob/master/properties.schema).
+**Narrative** has been assigned a label using the [aria-label](https://github.com/adaptlearning/adapt_framework/wiki/Aria-Labels) attribute: **ariaRegion**. This label is not a visible element. It is utilized by assistive technology such as screen readers. Should the region's text need to be customised, it can be found within the **globals** object in [*properties.schema*](https://github.com/adaptlearning/adapt-narrativeaudio/blob/master/properties.schema).
 <div float align=right><a href="#top">Back to Top</a></div>
 
 ## Limitations
@@ -79,7 +79,7 @@ On mobile devices, the narrative text is collapsed above the image. It is access
 ----------------------------
 **Version number:**  6.2.1   <a href="https://community.adaptlearning.org/" target="_blank"><img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/adapt-logo-mrgn-lft.jpg" alt="adapt learning logo" align="right"></a><br>
 **Framework versions:** 5.5+<br>
-**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-contrib-narrative/graphs/contributors)<br>
+**Author / maintainer:** Adapt Core Team with [contributors](https://github.com/adaptlearning/adapt-narrativeaudio/graphs/contributors)<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 14 for macOS/iOS/iPadOS, Opera
