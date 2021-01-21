@@ -39,13 +39,29 @@ define([
     onItemsActiveChange(item, _isActive) {
       if (!_isActive) return;
       this.setStage(item);
+      var currentplayer = item.get('_index');
+      var previous_player = currentplayer - 1;
+      var next_player = currentplayer + 1;
        this.$(`#audio-${item.get('_index')}`).get(0).play();
+        
+                    /*check if there is player before */
+            if(!$("#audio-" + previous_player).length == 0) {
+                    /*pause previous player*/
+                 $("#audio-" + previous_player).get(0).pause(); 
+            }
+            
+               /*check if there is player after*/
+            if(!$("#audio-" + next_player).length == 0) {
+                    /*pause next player*/
+                 $("#audio-" + next_player).get(0).pause(); 
+            }
+            
     }
 
     onItemsVisitedChange(item, _isVisited) {
       if (!_isVisited) return;
       this.$(`[data-index="${item.get('_index')}"]`).addClass('is-visited');
-      this.$(`#audio-${item.get('_index')}`).get(0).pause();    
+      this.$(`#audio-${item.get('_index')}`).get(0).pause();
     }
 
     calculateMode() {
