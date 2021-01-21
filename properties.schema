@@ -76,7 +76,7 @@
         "options": ["inview", "allItems"]
       },
       "validators": ["required"],
-      "help": "Whether completion is based on the learner having viewed all the narrative items - or just having viewed the component"
+      "help": "Whether completion is based on the learner having viewed all the narrativeaudio items - or just having viewed the component"
     },
     "_items": {
       "type": "array",
@@ -158,7 +158,16 @@
             "validators": ["required"],
             "help": "",
             "translatable": true
-          }
+          },
+          "audio": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Slide audio",
+          "inputType": "Asset:audio",
+          "validators": [],
+          "help": "Link to an MP3 audio"
+        }
         }
       }
     }

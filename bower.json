@@ -1,13 +1,13 @@
 {
-  "name": "adapt-contrib-narrative",
+  "name": "adapt-narrativeaudio",
   "version": "6.2.1",
   "framework": ">=5.5",
-  "homepage": "https://github.com/adaptlearning/adapt-contrib-narrative",
-  "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
-  "component" : "narrative",
-  "displayName" : "Narrative",
-  "description": "A component that displays an image gallery with accompanying text",
-  "main": "/js/adapt-contrib-narrative.js",
+  "homepage": "https://github.com/elearningdifferently/adapt-narrativeaudio",
+  "issues": "https://github.com/elearningdifferently/adapt-narrativeaudio/issues/new",
+  "component" : "narrativeaudio",
+  "displayName" : "Narrative with Audio",
+  "description": "A component that displays an image gallery with accompanying text and optional audio",
+  "main": "/js/adapt-narrativeaudio.js",
   "keywords": [
     "adapt-plugin",
     "adapt-component"

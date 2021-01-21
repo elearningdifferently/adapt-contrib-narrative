@@ -1,10 +1,10 @@
 define([
   'core/js/adapt',
-  './narrativeView',
+  './narrativeaudioView',
   'core/js/models/itemsComponentModel'
 ], function(Adapt, NarrativeView, ItemsComponentModel) {
 
-  return Adapt.register('narrative', {
+  return Adapt.register('narrativeaudio', {
     model: ItemsComponentModel.extend({}),
     view: NarrativeView
   });
